@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRISTAL — клининговая компания в Ростове-на-Дону</title>
+<meta name="description" content="Профессиональный клининг: уборка квартир, офисов, после ремонта. Безопасные средства. Скидка 15% при договоре от 6 месяцев.">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root { --primary: #3b82f6; --primary-dark: #2563eb; }
+  body { font-family: system-ui, sans-serif; background-color: #f9fafb; scroll-behavior: smooth; }
+
+  header { transition: all 0.3s; }
+
+  .section { padding: 5rem 1rem; max-width: 1280px; margin: 0 auto; opacity: 0; transform: translateY(30px); transition: all 0.6s ease-out; }
+  .section.visible { opacity: 1; transform: translateY(0); }
+
+  .card { background: white; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
+
+  /* Контактное меню */
+  #contact-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    min-width: 240px;
+    z-index: 50;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+  #contact-menu.show { display: flex; opacity: 1; transform: translateY(0); }
+  #contact-menu > * { padding: 1rem 1.5rem; border-bottom: 1px solid #eee; }
+  #contact-menu > *:last-child { border-bottom: none; }
+  #contact-menu a, #contact-menu button { display: block; text-align: left; }
+
+  /* Мобильное меню */
+  #mobile-menu { 
+    transition: opacity 0.3s ease; 
+    opacity: 0; 
+    pointer-events: none; 
+    display: none;
+    flex-direction: column; 
+  }
+  #mobile-menu.show { 
+    display: flex; 
+    opacity: 1; 
+    pointer-events: all; 
+  }
+
+  footer { background: #1f2937; color: white; text-align: center; padding: 4rem 1rem; }
+
+  .hero-image { width: 100%; max-width: 800px; height: 400px; background-color: #e5e7eb; border-radius: 1rem; margin: 2rem auto 0; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+    <div class="text-3xl font-bold text-blue-600">CRISTAL</div>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex items-center space-x-8 font-medium">
+      <a href="#hero" class="hover:text-blue-600 transition">Главная</a>
+      <a href="#services" class="hover:text-blue-600 transition">Услуги</a>
+      <a href="#about" class="hover:text-blue-600 transition">О компании</a>
+      <a href="#prices" class="hover:text-blue-600 transition">Цены</a>
+      <a href="#reviews" class="hover:text-blue-600 transition">Отзывы</a>
+      <a href="#contacts" class="hover:text-blue-600 transition">Контакты</a>
+    </nav>
+
+    <!-- Desktop contacts -->
+    <div class="relative">
+      <button id="contact-btn" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-blue-700 transition">
+        Контакты
+      </button>
+      <div id="contact-menu">
+        <a href="tel:+79064449048">Эльвира: +7 (906) 444-90-48</a>
+        <a href="tel:+79281456263">Светлана: +7 (928) 145-62-63</a>
+        <button id="copy-email">Скопировать email: kk_crystal@mail.ru</button>
+        <a href="https://t.me/CRISTAL_cleaning" target="_blank">Написать в Telegram</a>
+      </div>
+    </div>
+
+    <!-- Mobile burger -->
+    <button id="burger" class="md:hidden text-3xl">☰</button>
+  </div>
+</header>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" class="fixed inset-0 bg-black/60 z-40 items-center justify-center">
+  <div class="bg-white w-4/5 max-w-sm rounded-2xl p-8 relative">
+    <button id="close-mobile" class="absolute top-4 right-6 text-4xl">&times;</button>
+    <nav class="flex flex-col gap-6 text-xl font-medium mt-10">
+      <a href="#hero" class="mobile-link hover:text-blue-600">Главная</a>
+      <a href="#services" class="mobile-link hover:text-blue-600">Услуги</a>
+      <a href="#about" class="mobile-link hover:text-blue-600">О компании</a>
+      <a href="#prices" class="mobile-link hover:text-blue-600">Цены</a>
+      <a href="#reviews" class="mobile-link hover:text-blue-600">Отзывы</a>
+      <a href="#contacts" class="mobile-link hover:text-blue-600">Контакты</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Hero -->
+<section id="hero" class="section bg-white text-center pt-32 pb-20 border-b">
+  <div class="max-w-5xl mx-auto px-6">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6">Нет времени на уборку?</h1>
+    <p class="text-3xl mb-8">Пусть её сделают профессионалы CRISTAL!</p>
+    <p class="text-2xl mb-10 font-semibold text-blue-600">Скидка 15% при заключении договора на 6 месяцев и более</p>
+    <div class="flex flex-wrap justify-center gap-6 mb-12">
+      <div class="bg-blue-50 px-6 py-3 rounded-lg font-medium">Безопасные средства</div>
+      <div class="bg-blue-50 px-6 py-3 rounded-lg font-medium">Бесплатный выезд</div>
+      <div class="bg-blue-50 px-6 py-3 rounded-lg font-medium">Гарантия качества</div>
+    </div>
+    <div class="hero-image"></div>
+    <button class="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 mt-8">
+      Заказать уборку
+    </button>
+  </div>
+</section>
+
+<!-- Остальные секции: Services, About, Prices, Reviews, Contacts -->
+<section id="services" class="section bg-gray-50">
+  <h2 class="text-5xl font-bold text-center mb-12">Наши услуги</h2>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="card"><h3 class="text-2xl font-bold mb-4">Ежедневная / регулярная уборка</h3><p>Мытьё полов, влажная уборка, удаление пыли, протирание поверхностей, вынос мусора</p></div>
+    <div class="card"><h3 class="text-2xl font-bold mb-4">Генеральная уборка</h3><p>Полный комплекс: кухня, санузел, холодильник, плита, микроволновка, окна и т.д.</p></div>
+    <div class="card"><h3 class="text-2xl font-bold mb-4">Уборка после ремонта</h3><p>Удаление строительной пыли, мойка всех поверхностей — цена договорная</p></div>
+    <div class="card"><h3 class="text-2xl font-bold mb-4">Очистка кухонных и санитарных зон</h3><p>Глубокая чистка плит, раковин, сантехники</p></div>
+    <div class="card"><h3 class="text-2xl font-bold mb-4">Мойка окон (с двух сторон)</h3><p>Профессиональная мойка без разводов</p></div>
+    <div class="card"><h3 class="text-2xl font-bold mb-4">Уборка офисов и нежилых помещений</h3><p>Ежедневная и генеральная уборка для бизнеса</p></div>
+  </div>
+</section>
+
+<section id="about" class="section bg-white">
+  <h2 class="text-5xl font-bold text-center mb-12">О компании CRISTAL</h2>
+  <div class="max-w-4xl mx-auto text-xl leading-relaxed text-center">
+    <p class="mb-8">Мы используем только <strong>безопасные</strong> моющие средства, которые не вредят здоровью и не разрушают поверхности. Ориентированы на долгосрочное сотрудничество — система скидок для постоянных клиентов.</p>
+    <p class="mb-8">Для точного расчёта стоимости наш специалист <strong>бесплатно</strong> выезжает на объект для осмотра и замера. Цена зависит от степени загрязнения, объёма, регулярности и ваших пожеланий.</p>
+    <p class="font-semibold text-2xl">В стоимость входят профессиональные моющие средства!</p>
+  </div>
+</section>
+
+<section id="prices" class="section bg-gray-50">
+  <h2 class="text-5xl font-bold text-center mb-12">Цены</h2>
+  <div class="grid md:grid-cols-2 gap-12">
+    <div>
+      <h3 class="text-4xl font-bold mb-6 text-center">Для бизнеса</h3>
+      <div class="space-y-4">
+        <div class="bg-white p-6 rounded-xl shadow">Ежедневная уборка — от 120 ₽/м²</div>
+        <div class="bg-white p-6 rounded-xl shadow">Генеральная уборка — от 150 ₽/м²</div>
+        <div class="bg-white p-6 rounded-xl shadow">Нежилые помещения — от 250 ₽/м²</div>
+        <div class="bg-white p-6 rounded-xl shadow">Кухонные/санитарные зоны — от 130 ₽/м²</div>
+        <div class="bg-white p-6 rounded-xl shadow">Мойка окон — от 160 ₽/м²</div>
+        <div class="bg-white p-6 rounded-xl shadow font-bold">После ремонта — договорная</div>
+      </div>
+    </div>
+    <div>
+      <h3 class="text-4xl font-bold mb-6 text-center">Для дома</h3>
+      <div class="space-y-4">
+        <div class="bg-white p-6 rounded-xl shadow">Ежедневная уборка — от 140 ₽/м²</div>
+        <div class="bg-white p-6 rounded-xl shadow">Генеральная уборка — от 150 ₽/м²</div>
+        <div class="bg-white p-6 rounded-xl shadow">Кухонные/санитарные зоны — от 170 ₽/м²</div>
+        <div class="bg-white p-6 rounded-xl shadow">Мойка окон — от 150 ₽/м²</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="section bg-white">
+  <h2 class="text-5xl font-bold text-center mb-12">Отзывы клиентов</h2>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="card"><p class="font-bold text-xl mb-2">Елена Соколова</p><p class="text-gray-600 mb-3">Ростов-на-Дону</p><p>"Отличная компания! Заказываю уже полгода, всегда чисто и безопасно для ребёнка."</p></div>
+    <div class="card"><p class="font-bold text-xl mb-2">Иван П.</p><p class="text-gray-600 mb-3">Ростов-на-Дону</p><p>"Очень доволен уборкой офиса. Профессионально и быстро!"</p></div>
+    <div class="card"><p class="font-bold text-xl mb-2">Мария С.</p><p class="text-gray-600 mb-3">Ростов-на-Дону</p><p>"Команда пунктуальная и аккуратная. Рекомендую!"</p></div>
+  </div>
+</section>
+
+<section id="contacts" class="section bg-gray-50">
+  <h2 class="text-5xl font-bold text-center mb-12">Свяжитесь с нами</h2>
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="text-xl mb-10">
+      <p>Эльвира: <a href="tel:+79064449048" class="text-blue-600">+7 (906) 444-90-48</a></p>
+      <p>Светлана: <a href="tel:+79281456263" class="text-blue-600">+7 (928) 145-62-63</a></p>
+      <p>Email: <a href="mailto:kk_crystal@mail.ru" class="text-blue-600">kk_crystal@mail.ru</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="font-bold mb-2">Клининговая компания CRISTAL</p>
+  <p>📞 +7 (906) 444-90-48 — Эльвира</p>
+  <p>📞 +7 (928) 145-62-63 — Светлана</p>
+  <p class="mt-2">✉️ kk_crystal@mail.ru</p>
+  <p class="mt-4 text-sm opacity-70">© 2026 CRISTAL</p>
+</footer>
+
+<script>
+/* Fade-in sections */
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+sections.forEach(sec => observer.observe(sec));
+
+/* Mobile menu */
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobile-menu');
+const closeMobile = document.getElementById('close-mobile');
+
+function openMobileMenu() {
+  mobileMenu.classList.add('show');
+}
+function closeMobileMenu() {
+  mobileMenu.classList.remove('show');
+}
+burger.addEventListener('click', openMobileMenu);
+closeMobile.addEventListener('click', closeMobileMenu);
+mobileMenu.addEventListener('click', e => { if(e.target === mobileMenu) closeMobileMenu(); });
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', closeMobileMenu);
+});
+
+/* Desktop contact menu */
+const contactBtn = document.getElementById('contact-btn');
+const contactMenu = document.getElementById('contact-menu');
+contactBtn.addEventListener('click', e => { e.stopPropagation(); contactMenu.classList.toggle('show'); });
+document.addEventListener('click', e => { if(!contactMenu.contains(e.target)) contactMenu.classList.remove('show'); });
+
+/* Copy email */
+document.getElementById('copy-email').addEventListener('click', () => {
+  navigator.clipboard.writeText('kk_crystal@mail.ru');
+  alert('Email скопирован!');
+});
+</script>
+
+</body>
+</html>
