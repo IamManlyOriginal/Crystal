@@ -683,13 +683,13 @@
     <p class="text-3xl md:text-4xl mb-8 font-semibold text-gray-800">Пусть её сделают профессионалы <span class="text-blue-600">CRYSTAL</span></p>
     
     <div class="flex flex-wrap justify-center gap-4 mb-12">
-      <div class="bg-white px-6 py-3 rounded-full font-medium shadow-md flex items-center gap-2">
+      <div class="bg-white px-6 py-3 rounded-full font-medium shadow-md flex items-center gap-2 price-card">
         <i class="fas fa-shield-alt text-green-500"></i> Безопасные средства
       </div>
-      <div class="bg-white px-6 py-3 rounded-full font-medium shadow-md flex items-center gap-2">
+      <div class="bg-white px-6 py-3 rounded-full font-medium shadow-md flex items-center gap-2 price-card">
         <i class="fas fa-car text-blue-500"></i> Бесплатный выезд
       </div>
-      <div class="bg-white px-6 py-3 rounded-full font-medium shadow-md flex items-center gap-2">
+      <div class="bg-white px-6 py-3 rounded-full font-medium shadow-md flex items-center gap-2 price-card">
         <i class="fas fa-award text-yellow-500"></i> Гарантия качества
       </div>
     </div>
@@ -1507,106 +1507,126 @@ let currentOrder = {
   calculatedPrice: 0
 };
 
-// Инициализация калькулятора
-function initCalculator() {
-  const squareSlider = document.getElementById('square-slider');
-  const squareValue = document.getElementById('square-value');
-  const propertyType = document.getElementById('property-type');
-  const cleaningType = document.getElementById('cleaning-type');
-  const frequency = document.getElementById('frequency');
-  const calculatorResult = document.getElementById('calculator-result');
-  
-  // Обновление отображения площади
-  squareSlider.addEventListener('input', function() {
-    squareValue.textContent = this.value;
-    currentOrder.square = parseInt(this.value);
-    calculatePrice();
-  });
-  
-  // Обновление при изменении типа помещения
-  propertyType.addEventListener('change', function() {
-    currentOrder.propertyType = this.value;
-    calculatePrice();
-  });
-  
-  // Обновление при изменении типа уборки
-  cleaningType.addEventListener('change', function() {
-    currentOrder.cleaningType = this.value;
-    calculatePrice();
-  });
-  
-  // Обновление при изменении периодичности
-  frequency.addEventListener('change', function() {
-    currentOrder.frequency = this.value;
-    calculatePrice();
-  });
-  
-  // Обработка дополнительных опций
-  document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', function() {
-      const optionId = this.id.replace('option-', '');
-      
-      if (this.checked) {
-        if (!currentOrder.extras.includes(optionId)) {
-          currentOrder.extras.push(optionId);
-        }
-      } else {
-        const index = currentOrder.extras.indexOf(optionId);
-        if (index > -1) {
-          currentOrder.extras.splice(index, 1);
-        }
-      }
-      
-      calculatePrice();
-    });
-  });
-  
-  // Первоначальный расчет
-  calculatePrice();
-  
-  // Показываем результат с анимацией
-  setTimeout(() => {
-    calculatorResult.classList.add('show');
-  }, 300);
-}
-
 // Расчет стоимости
 function calculatePrice() {
-  // Базовая стоимость за м²
-  let basePricePerM2 = priceData[currentOrder.propertyType][currentOrder.cleaningType];
-  
-  // Применяем коэффициент периодичности
-  let frequencyMultiplier = 1;
-  switch (currentOrder.frequency) {
-    case 'weekly': frequencyMultiplier = 0.9; break;
-    case 'monthly': frequencyMultiplier = 0.85; break;
-    case 'contract': frequencyMultiplier = 0.75; break; // Скидка 25% за договор
+  try {
+    // Базовая стоимость за м²
+    let basePricePerM2 = priceData[currentOrder.propertyType]?.[currentOrder.cleaningType] || 140;
+    
+    // Применяем коэффициент периодичности
+    let frequencyMultiplier = 1;
+    switch (currentOrder.frequency) {
+      case 'weekly': frequencyMultiplier = 0.9; break;
+      case 'monthly': frequencyMultiplier = 0.85; break;
+      case 'contract': frequencyMultiplier = 0.75; break; // Скидка 25% за договор
+    }
+    
+    // Стоимость за площадь
+    let areaPrice = basePricePerM2 * currentOrder.square * frequencyMultiplier;
+    
+    // Добавляем стоимость дополнительных опций
+    let extrasPrice = 0;
+    currentOrder.extras.forEach(extra => {
+      extrasPrice += extraOptions[extra] || 0;
+    });
+    
+    // Итоговая стоимость
+    let totalPrice = Math.round(areaPrice + extrasPrice);
+    
+    // Сохраняем в объект заказа
+    currentOrder.calculatedPrice = totalPrice;
+    
+    // Обновляем отображение
+    const priceElement = document.getElementById('calculated-price');
+    if (priceElement) {
+      priceElement.textContent = totalPrice.toLocaleString('ru-RU');
+      
+      // Анимация обновления
+      priceElement.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        priceElement.style.transform = 'scale(1)';
+      }, 200);
+    }
+  } catch (error) {
+    console.error('Ошибка расчета стоимости:', error);
   }
-  
-  // Стоимость за площадь
-  let areaPrice = basePricePerM2 * currentOrder.square * frequencyMultiplier;
-  
-  // Добавляем стоимость дополнительных опций
-  let extrasPrice = 0;
-  currentOrder.extras.forEach(extra => {
-    extrasPrice += extraOptions[extra] || 0;
-  });
-  
-  // Итоговая стоимость
-  let totalPrice = Math.round(areaPrice + extrasPrice);
-  
-  // Сохраняем в объект заказа
-  currentOrder.calculatedPrice = totalPrice;
-  
-  // Обновляем отображение
-  document.getElementById('calculated-price').textContent = totalPrice.toLocaleString('ru-RU');
-  
-  // Анимация обновления
-  const priceElement = document.getElementById('calculated-price');
-  priceElement.style.transform = 'scale(1.1)';
-  setTimeout(() => {
-    priceElement.style.transform = 'scale(1)';
-  }, 200);
+}
+
+// Инициализация калькулятора
+function initCalculator() {
+  try {
+    const squareSlider = document.getElementById('square-slider');
+    const squareValue = document.getElementById('square-value');
+    const propertyType = document.getElementById('property-type');
+    const cleaningType = document.getElementById('cleaning-type');
+    const frequency = document.getElementById('frequency');
+    const calculatorResult = document.getElementById('calculator-result');
+    
+    // Проверка наличия элементов
+    if (!squareSlider || !squareValue || !propertyType || !cleaningType || !frequency) {
+      console.error('Не найдены элементы калькулятора');
+      return;
+    }
+    
+    // Обновление отображения площади
+    squareSlider.addEventListener('input', function() {
+      squareValue.textContent = this.value;
+      currentOrder.square = parseInt(this.value);
+      calculatePrice();
+    });
+    
+    // Обновление при изменении типа помещения
+    propertyType.addEventListener('change', function() {
+      currentOrder.propertyType = this.value;
+      calculatePrice();
+    });
+    
+    // Обновление при изменении типа уборки
+    cleaningType.addEventListener('change', function() {
+      currentOrder.cleaningType = this.value;
+      calculatePrice();
+    });
+    
+    // Обновление при изменении периодичности
+    frequency.addEventListener('change', function() {
+      currentOrder.frequency = this.value;
+      calculatePrice();
+    });
+    
+    // Обработка дополнительных опций
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const optionId = this.id.replace('option-', '');
+        
+        if (this.checked) {
+          if (!currentOrder.extras.includes(optionId)) {
+            currentOrder.extras.push(optionId);
+          }
+        } else {
+          const index = currentOrder.extras.indexOf(optionId);
+          if (index > -1) {
+            currentOrder.extras.splice(index, 1);
+          }
+        }
+        
+        calculatePrice();
+      });
+    });
+    
+    // Первоначальный расчет
+    calculatePrice();
+    
+    // Показываем результат с анимацией
+    if (calculatorResult) {
+      setTimeout(() => {
+        calculatorResult.classList.add('show');
+      }, 300);
+    }
+    
+    console.log('Калькулятор инициализирован');
+  } catch (error) {
+    console.error('Ошибка инициализации калькулятора:', error);
+  }
 }
 
 // Генерация текста заказа для мессенджеров
@@ -1661,140 +1681,175 @@ function generateOrderMessage() {
 
 // Управление модальными окнами
 function initModals() {
-  const orderBtn = document.getElementById('order-btn');
-  const calculateOrderBtn = document.getElementById('calculate-order-btn');
-  const contactModal = document.getElementById('contact-modal');
-  const closeModal = document.getElementById('close-modal');
-  const contactOptions = document.querySelectorAll('.contact-option');
-  
-  // Открытие модального окна при нажатии на кнопки заказа
-  orderBtn.addEventListener('click', () => {
-    contactModal.classList.add('show');
-  });
-  
-  calculateOrderBtn.addEventListener('click', () => {
-    contactModal.classList.add('show');
-  });
-  
-  // Закрытие модального окна
-  closeModal.addEventListener('click', () => {
-    contactModal.classList.remove('show');
-  });
-  
-  // Закрытие при клике вне модального окна
-  contactModal.addEventListener('click', (e) => {
-    if (e.target === contactModal) {
-      contactModal.classList.remove('show');
+  try {
+    const orderBtn = document.getElementById('order-btn');
+    const calculateOrderBtn = document.getElementById('calculate-order-btn');
+    const contactModal = document.getElementById('contact-modal');
+    const closeModal = document.getElementById('close-modal');
+    const contactOptions = document.querySelectorAll('.contact-option');
+    
+    // Открытие модального окна при нажатии на кнопки заказа
+    if (orderBtn) {
+      orderBtn.addEventListener('click', () => {
+        if (contactModal) contactModal.classList.add('show');
+      });
     }
-  });
-  
-  // Обработка выбора способа связи
-  contactOptions.forEach(option => {
-    option.addEventListener('click', function() {
-      const contactMethod = this.getAttribute('data-contact');
-      const orderMessage = generateOrderMessage();
-      const encodedMessage = encodeURIComponent(orderMessage);
-      
-      switch (contactMethod) {
-        case 'phone':
-          // Выбор телефона для звонка
-          const phoneNumber = confirm('Позвонить Эльмире по номеру +7 (906) 444-90-48? (Нажмите "Отмена" для звонка Светлане)') 
-            ? '+79064449048' 
-            : '+79281456263';
-          window.location.href = `tel:${phoneNumber}`;
-          break;
-          
-        case 'telegram':
-          // Открытие Telegram с предзаполненным сообщением
-          window.open(`https://t.me/Kristal_R?text=${encodedMessage}`, '_blank');
+    
+    if (calculateOrderBtn) {
+      calculateOrderBtn.addEventListener('click', () => {
+        if (contactModal) contactModal.classList.add('show');
+      });
+    }
+    
+    // Закрытие модального окна
+    if (closeModal) {
+      closeModal.addEventListener('click', () => {
+        if (contactModal) contactModal.classList.remove('show');
+      });
+    }
+    
+    // Закрытие при клике вне модального окна
+    if (contactModal) {
+      contactModal.addEventListener('click', (e) => {
+        if (e.target === contactModal) {
           contactModal.classList.remove('show');
-          break;
-          
-        case 'whatsapp':
-          // Открытие WhatsApp с предзаполненным сообщением
-          window.open(`https://wa.me/79064449048?text=${encodedMessage}`, '_blank');
-          contactModal.classList.remove('show');
-          break;
-          
-        case 'email':
-          // Отправка email
-          const subject = encodeURIComponent('Заказ уборки с сайта CRYSTAL');
-          const body = encodeURIComponent(orderMessage);
-          window.location.href = `mailto:kk_crystal@mail.ru?subject=${subject}&body=${body}`;
-          contactModal.classList.remove('show');
-          break;
-      }
+        }
+      });
+    }
+    
+    // Обработка выбора способа связи
+    contactOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const contactMethod = this.getAttribute('data-contact');
+        const orderMessage = generateOrderMessage();
+        const encodedMessage = encodeURIComponent(orderMessage);
+        
+        switch (contactMethod) {
+          case 'phone':
+            // Выбор телефона для звонка
+            const phoneNumber = confirm('Позвонить Эльмире по номеру +7 (906) 444-90-48? (Нажмите "Отмена" для звонка Светлане)') 
+              ? '+79064449048' 
+              : '+79281456263';
+            window.location.href = `tel:${phoneNumber}`;
+            break;
+            
+          case 'telegram':
+            // Открытие Telegram с предзаполненным сообщением
+            window.open(`https://t.me/Kristal_R?text=${encodedMessage}`, '_blank');
+            if (contactModal) contactModal.classList.remove('show');
+            break;
+            
+          case 'whatsapp':
+            // Открытие WhatsApp с предзаполненным сообщением
+            window.open(`https://wa.me/79064449048?text=${encodedMessage}`, '_blank');
+            if (contactModal) contactModal.classList.remove('show');
+            break;
+            
+          case 'email':
+            // Отправка email
+            const subject = encodeURIComponent('Заказ уборки с сайта CRYSTAL');
+            const body = encodeURIComponent(orderMessage);
+            window.location.href = `mailto:kk_crystal@mail.ru?subject=${subject}&body=${body}`;
+            if (contactModal) contactModal.classList.remove('show');
+            break;
+        }
+      });
     });
-  });
+    
+    console.log('Модальные окна инициализированы');
+  } catch (error) {
+    console.error('Ошибка инициализации модальных окон:', error);
+  }
 }
 
 // Fade-in sections
-const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => { 
-    if(entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.05 });
-sections.forEach(sec => observer.observe(sec));
+function initSectionsObserver() {
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => { 
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.05 });
+  
+  sections.forEach(sec => observer.observe(sec));
+}
 
 // Mobile menu
-const burger = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobile-menu');
-const closeMobile = document.getElementById('close-mobile');
+function initMobileMenu() {
+  try {
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeMobile = document.getElementById('close-mobile');
 
-function openMobileMenu() {
-  mobileMenu.classList.add('show');
-}
-function closeMobileMenu() {
-  mobileMenu.classList.remove('show');
-}
-burger.addEventListener('click', openMobileMenu);
-closeMobile.addEventListener('click', closeMobileMenu);
-mobileMenu.addEventListener('click', e => { 
-  if(e.target === mobileMenu) closeMobileMenu(); 
-});
+    function openMobileMenu() {
+      if (mobileMenu) mobileMenu.classList.add('show');
+    }
+    
+    function closeMobileMenu() {
+      if (mobileMenu) mobileMenu.classList.remove('show');
+    }
+    
+    if (burger) burger.addEventListener('click', openMobileMenu);
+    if (closeMobile) closeMobile.addEventListener('click', closeMobileMenu);
+    
+    if (mobileMenu) {
+      mobileMenu.addEventListener('click', e => { 
+        if(e.target === mobileMenu) closeMobileMenu(); 
+      });
+    }
 
-document.querySelectorAll('.mobile-link').forEach(link => {
-  link.addEventListener('click', closeMobileMenu);
-});
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+    
+    console.log('Мобильное меню инициализировано');
+  } catch (error) {
+    console.error('Ошибка инициализации мобильного меню:', error);
+  }
+}
 
 // Desktop contact menu
-const contactBtn = document.getElementById('contact-btn');
-const contactMenu = document.getElementById('contact-menu');
-if (contactBtn && contactMenu) {
-  contactBtn.addEventListener('click', e => { 
-    e.stopPropagation(); 
-    contactMenu.classList.toggle('show'); 
-  });
-  
-  document.addEventListener('click', e => { 
-    if(!contactMenu.contains(e.target) && !contactBtn.contains(e.target)) {
-      contactMenu.classList.remove('show'); 
+function initContactMenu() {
+  try {
+    const contactBtn = document.getElementById('contact-btn');
+    const contactMenu = document.getElementById('contact-menu');
+    
+    if (contactBtn && contactMenu) {
+      contactBtn.addEventListener('click', e => { 
+        e.stopPropagation(); 
+        contactMenu.classList.toggle('show'); 
+      });
+      
+      document.addEventListener('click', e => { 
+        if(!contactMenu.contains(e.target) && !contactBtn.contains(e.target)) {
+          contactMenu.classList.remove('show'); 
+        }
+      });
     }
-  });
+    
+    console.log('Контактное меню инициализировано');
+  } catch (error) {
+    console.error('Ошибка инициализации контактного меню:', error);
+  }
 }
 
 // Copy email function
-function copyEmail(email) {
-  navigator.clipboard.writeText(email)
-    .then(() => {
-      // Визуальное подтверждение
-      const originalText = document.getElementById('copy-email-footer')?.innerHTML || '';
-      if (document.getElementById('copy-email-footer')) {
-        document.getElementById('copy-email-footer').innerHTML = '<i class="fas fa-check"></i>';
-        setTimeout(() => {
-          document.getElementById('copy-email-footer').innerHTML = originalText;
-        }, 2000);
-      }
-      
-      // Можно добавить Toast-уведомление
-      showNotification('Email скопирован в буфер обмена!');
-    })
-    .catch(err => {
-      console.error('Ошибка копирования: ', err);
-    });
+function initCopyEmail() {
+  function copyEmail(email) {
+    navigator.clipboard.writeText(email)
+      .then(() => {
+        showNotification('Email скопирован в буфер обмена!');
+      })
+      .catch(err => {
+        console.error('Ошибка копирования: ', err);
+        showNotification('Не удалось скопировать email');
+      });
+  }
+
+  document.getElementById('copy-email')?.addEventListener('click', () => copyEmail('kk_crystal@mail.ru'));
+  document.getElementById('copy-email-footer')?.addEventListener('click', () => copyEmail('kk_crystal@mail.ru'));
 }
 
 // Уведомление
@@ -1809,47 +1864,57 @@ function showNotification(message) {
   }, 3000);
 }
 
-// Инициализация кнопок копирования email
-document.getElementById('copy-email')?.addEventListener('click', () => copyEmail('kk_crystal@mail.ru'));
-document.getElementById('copy-email-footer')?.addEventListener('click', () => copyEmail('kk_crystal@mail.ru'));
-
 // Плавная прокрутка для всех ссылок с якорями
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
-    
-    const targetElement = document.querySelector(targetId);
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
-      });
-    }
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    });
   });
-});
+}
 
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-  initCalculator();
-  initModals();
-  
-  // Добавляем анимацию для карточек
+// Инициализация анимаций карточек
+function initCardAnimations() {
   const cards = document.querySelectorAll('.fade-in');
   cards.forEach((card, index) => {
     card.style.animationDelay = `${index * 0.1}s`;
   });
+}
+
+// Инициализация при загрузке страницы
+function initAll() {
+  console.log('Инициализация сайта...');
   
-  // Параллакс эффект для героя
-  window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const heroImage = document.querySelector('.hero-image');
-    if (heroImage) {
-      heroImage.style.transform = `translateY(${scrolled * 0.05}px)`;
-    }
-  });
-});
+  // Инициализируем компоненты по порядку
+  initCalculator();
+  initModals();
+  initMobileMenu();
+  initContactMenu();
+  initCopyEmail();
+  initSmoothScroll();
+  initSectionsObserver();
+  initCardAnimations();
+  
+  console.log('Сайт успешно инициализирован');
+}
+
+// Запускаем инициализацию когда DOM полностью загружен
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  // DOM уже загружен
+  initAll();
+}
 </script>
 
 </body>
