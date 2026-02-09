@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CRYSTAL — клининговая компания в Ростове-на-Дону</title>
+<!-- Добавьте эту строку для favicon -->
+<link rel="icon" type="image/x-icon" href="source/logo.jpeg">
+<link rel="shortcut icon" type="image/x-icon" href="source/logo.jpeg">
+<!-- Или для разных форматов -->
+<link rel="icon" type="image/png" sizes="32x32" href="source/logo.jpeg">
+<link rel="icon" type="image/png" sizes="16x16" href="source/logo.jpeg">
 <meta name="description" content="Профессиональный клининг: уборка квартир, офисов, после ремонта. Безопасные средства. Скидка 15% при договоре от 6 месяцев.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -513,10 +519,15 @@
 <!-- Header -->
 <header class="fixed top-0 left-0 right-0 bg-white/95 shadow-md z-50 border-b border-gray-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-    <div class="logo">
-      <div class="logo-main">CRYSTAL</div>
-      <div class="logo-sub">КЛИНИНГОВАЯ КОМПАНИЯ</div>
+    <div class="logo flex-row flex items-center gap-3">
+      <img src="source/logo.jpeg" alt="CRYSTAL" class="w-10 h-10 md:w-12 md:h-12 rounded-lg object-cover shadow-sm">
+      <div>
+        <div class="logo-main">CRYSTAL</div>
+        <div class="logo-sub">КЛИНИНГОВАЯ КОМПАНИЯ</div>
+      </div>
     </div>
+    
+    <!-- остальной код header остается без изменений -->
 
     <!-- Desktop nav -->
     <nav class="hidden md:flex items-center space-x-8 font-medium">
@@ -686,7 +697,7 @@
   <div id="image-carousel" class="relative h-96 md:h-[500px] w-full overflow-hidden rounded-2xl">
     <!-- Слайд 1 -->
     <div class="carousel-slide active absolute inset-0 w-full h-full">
-      <img src="source/big_logo.jpg" 
+      <img src="source/house_cleaning.png" 
            alt="Профессиональная уборка квартиры" 
            class="w-full h-full object-cover">
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -698,19 +709,19 @@
     
     <!-- Слайд 2 -->
     <div class="carousel-slide absolute inset-0 w-full h-full">
-      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
-           alt="Уборка после ремонта" 
+      <img src="source/clear_divan.png" 
+           alt="Чистка диванов" 
            class="w-full h-full object-cover">
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
       <div class="absolute bottom-8 left-8 text-white max-w-lg">
-        <h3 class="text-3xl font-bold mb-2">Уборка после ремонта</h3>
-        <p>Полное удаление строительной пыли и остатков материалов</p>
+        <h3 class="text-3xl font-bold mb-2">Чистка диванов</h3>
+        <p>Полная очистка пыли и остатков шерсти и подобного</p>
       </div>
     </div>
     
     <!-- Слайд 3 -->
     <div class="carousel-slide absolute inset-0 w-full h-full">
-      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+      <img src="source/clear_windows.png" 
            alt="Мойка окон" 
            class="w-full h-full object-cover">
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
