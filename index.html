@@ -13,6 +13,7 @@
 <meta name="description" content="Профессиональный клининг: уборка квартир, офисов, после ремонта. Безопасные средства. Скидка 15% при договоре от 6 месяцев.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
   :root { 
     --primary: #3b82f6; 
@@ -42,7 +43,7 @@
   }
   
   .section { 
-    padding: 6rem 1rem; 
+    padding: 2rem 1rem; 
     max-width: 1280px; 
     margin: 0 auto; 
     opacity: 0; 
@@ -513,6 +514,7 @@
     max-width: 60%;
   }
 </style>
+
 </head>
 <body class="relative">
 
@@ -671,7 +673,7 @@
 </div>
 
 <!-- Hero -->
-<section id="hero" class="section bg-gradient-to-br from-blue-50 to-indigo-50 pt-32 pb-24">
+<section id="hero" class="section bg-gradient-to-br from-blue-50 to-indigo-50 pt-32">
   <div class="max-w-6xl mx-auto px-6 text-center">
     <div class="inline-block mb-6">
       <span class="badge pulse-animation"><i class="fas fa-percentage mr-1"></i> Скидка 15% при договоре от 6 месяцев</span>
@@ -693,61 +695,112 @@
     </div>
     
 <div class="relative overflow-hidden rounded-2xl shadow-2xl mt-8 mb-6">
-  <!-- Карусель изображений -->
-  <div id="image-carousel" class="relative h-96 md:h-[500px] w-full overflow-hidden rounded-2xl">
-    <!-- Слайд 1 -->
-    <div class="carousel-slide active absolute inset-0 w-full h-full">
-      <img src="source/house_cleaning.png" 
-           alt="Профессиональная уборка квартиры" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-      <div class="absolute bottom-8 left-8 text-white max-w-lg">
-        <h3 class="text-3xl font-bold mb-2">Профессиональный клининг</h3>
-        <p>Используем только безопасные средства и современное оборудование</p>
+</section>
+
+<!-- Services -->
+<section id="services" class="section bg-gray-50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-5xl font-bold text-center mb-4">Наши услуги</h2>
+    <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">Полный спектр клининговых услуг для дома и офиса с использованием профессионального оборудования и безопасных средств</p>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="card fade-in" style="animation-delay: 0.1s">
+        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-calendar-day"></i></div>
+        <h3 class="text-2xl font-bold mb-4">Ежедневная / регулярная уборка</h3>
+        <p class="text-gray-700">Мытьё полов, влажная уборка, удаление пыли, протирание поверхностей, вынос мусора. Идеально для поддержания чистоты.</p>
       </div>
-    </div>
-    
-    <!-- Слайд 2 -->
-    <div class="carousel-slide absolute inset-0 w-full h-full">
-      <img src="source/clear_divan.png" 
-           alt="Чистка диванов" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-      <div class="absolute bottom-8 left-8 text-white max-w-lg">
-        <h3 class="text-3xl font-bold mb-2">Чистка диванов</h3>
-        <p>Полная очистка пыли и остатков шерсти и подобного</p>
+      
+      <div class="card fade-in" style="animation-delay: 0.2s">
+        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-broom"></i></div>
+        <h3 class="text-2xl font-bold mb-4">Генеральная уборка</h3>
+        <p class="text-gray-700">Полный комплекс: кухня, санузел, холодильник, плита, микроволновка, окна, балконы. Глубокая очистка всех поверхностей.</p>
       </div>
-    </div>
-    
-    <!-- Слайд 3 -->
-    <div class="carousel-slide absolute inset-0 w-full h-full">
-      <img src="source/clear_windows.png" 
-           alt="Мойка окон" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-      <div class="absolute bottom-8 left-8 text-white max-w-lg">
-        <h3 class="text-3xl font-bold mb-2">Мойка окон без разводов</h3>
-        <p>Профессиональная чистка окон с двух сторон</p>
+      
+      <div class="card fade-in" style="animation-delay: 0.3s">
+        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-paint-roller"></i></div>
+        <h3 class="text-2xl font-bold mb-4">Уборка после ремонта</h3>
+        <p class="text-gray-700">Удаление строительной пыли, мойка всех поверхностей, чистка вентиляции, уборка остатков строительных материалов.</p>
       </div>
-    </div>
-    
-    <!-- Кнопки навигации карусели -->
-    <button id="prev-btn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm transition-all">
-      <i class="fas fa-chevron-left text-xl"></i>
-    </button>
-    <button id="next-btn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm transition-all">
-      <i class="fas fa-chevron-right text-xl"></i>
-    </button>
-    
-    <!-- Индикаторы слайдов -->
-    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
-      <div class="carousel-indicator w-3 h-3 rounded-full bg-white cursor-pointer"></div>
-      <div class="carousel-indicator w-3 h-3 rounded-full bg-white/50 cursor-pointer"></div>
-      <div class="carousel-indicator w-3 h-3 rounded-full bg-white/50 cursor-pointer"></div>
+      
+      <div class="card fade-in" style="animation-delay: 0.4s">
+        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-kitchen-set"></i></div>
+        <h3 class="text-2xl font-bold mb-4">Очистка кухонных и санитарных зон</h3>
+        <p class="text-gray-700">Глубокая чистка плит, раковин, сантехники, удаление жировых отложений, дезинфекция поверхностей.</p>
+      </div>
+      
+      <div class="card fade-in" style="animation-delay: 0.5s">
+        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-window-maximize"></i></div>
+        <h3 class="text-2xl font-bold mb-4">Мойка окон (с двух сторон)</h3>
+        <p class="text-gray-700">Профессиональная мойка без разводов, чистка рам и подоконников. Безопасные средства для любых типов стекол.</p>
+      </div>
+      
+      <div class="card fade-in" style="animation-delay: 0.6s">
+        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-building"></i></div>
+        <h3 class="text-2xl font-bold mb-4">Уборка офисов и нежилых помещений</h3>
+        <p class="text-gray-700">Ежедневная и генеральная уборка для бизнеса, магазинов, складов, медицинских учреждений.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
+<!-- Карусель изображений -->
+<section class="section bg-gradient-to-br from-blue-50 to-indigo-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <!-- Контейнер карусели -->
+    <div id="image-carousel" class="relative h-96 md:h-[500px] w-full overflow-hidden rounded-2xl shadow-2xl">
+      <!-- Слайд 1 -->
+      <div class="carousel-slide active absolute inset-0 w-full h-full">
+        <img src="source/house_cleaning.png" 
+             alt="Профессиональная уборка квартиры" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div class="absolute bottom-8 left-8 text-white max-w-lg">
+          <h3 class="text-3xl font-bold mb-2">Профессиональный клининг</h3>
+          <p>Используем только безопасные средства и современное оборудование</p>
+        </div>
+      </div>
+      
+      <!-- Слайд 2 -->
+      <div class="carousel-slide absolute inset-0 w-full h-full">
+        <img src="source/clear_divan.png" 
+             alt="Чистка диванов" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div class="absolute bottom-8 left-8 text-white max-w-lg">
+          <h3 class="text-3xl font-bold mb-2">Чистка диванов</h3>
+          <p>Полная очистка пыли и остатков шерсти и подобного</p>
+        </div>
+      </div>
+      
+      <!-- Слайд 3 -->
+      <div class="carousel-slide absolute inset-0 w-full h-full">
+        <img src="source/clear_windows.png" 
+             alt="Мойка окон" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+        <div class="absolute bottom-8 left-8 text-white max-w-lg">
+          <h3 class="text-3xl font-bold mb-2">Мойка окон без разводов</h3>
+          <p>Профессиональная чистка окон с двух сторон</p>
+        </div>
+      </div>
+      
+      <!-- Кнопки навигации карусели -->
+      <button id="prev-btn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm transition-all z-10">
+        <i class="fas fa-chevron-left text-xl"></i>
+      </button>
+      <button id="next-btn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-sm transition-all z-10">
+        <i class="fas fa-chevron-right text-xl"></i>
+      </button>
+      
+      <!-- Индикаторы слайдов -->
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+        <button class="carousel-indicator w-3 h-3 rounded-full bg-white cursor-pointer" aria-label="Перейти к слайду 1"></button>
+        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 cursor-pointer" aria-label="Перейти к слайду 2"></button>
+        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 cursor-pointer" aria-label="Перейти к слайду 3"></button>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- Стили для карусели -->
 <style>
   .carousel-slide {
@@ -769,8 +822,25 @@
     background-color: white;
     transform: scale(1.2);
   }
+  
+  /* Адаптивные кнопки */
+  @media (max-width: 768px) {
+    #prev-btn,
+    #next-btn {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    
+    #order-btn {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin: 0 auto;
+    }
+  }
 </style>
-
 <script>
   // Карусель изображений
   let currentSlide = 0;
@@ -781,6 +851,7 @@
     // Скрываем все слайды
     slides.forEach(slide => {
       slide.classList.remove('active', 'prev');
+      slide.setAttribute('aria-hidden', 'true');
     });
 
     // Обновляем текущий слайд
@@ -788,15 +859,18 @@
 
     // Показываем активный слайд
     slides[currentSlide].classList.add('active');
+    slides[currentSlide].setAttribute('aria-hidden', 'false');
 
     // Обновляем индикаторы
     indicators.forEach((indicator, index) => {
       if (index === currentSlide) {
         indicator.classList.add('active');
         indicator.style.backgroundColor = 'white';
+        indicator.setAttribute('aria-current', 'true');
       } else {
         indicator.classList.remove('active');
         indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+        indicator.setAttribute('aria-current', 'false');
       }
     });
   }
@@ -830,13 +904,90 @@
 
   // Инициализация
   showSlide(0);
-</script>
+  
+  // Остановка автопрокрутки при наведении
+  const carousel = document.getElementById('image-carousel');
+  if (carousel) {
+    carousel.addEventListener('mouseenter', () => {
+      clearInterval(carouselInterval);
+    });
     
-    <div class="mt-12">
-      <button id="order-btn" class="btn-primary text-xl px-12 py-5 mx-auto">
-        <i class="fas fa-broom mr-3"></i>Заказать уборку
-      </button>
-      <p class="text-gray-600 mt-4">Нажмите, чтобы рассчитать стоимость и выбрать удобный способ связи</p>
+    carousel.addEventListener('mouseleave', () => {
+      carouselInterval = setInterval(() => {
+        showSlide(currentSlide + 1);
+      }, 5000);
+    });
+  }
+</script>
+
+<!-- Prices -->
+<section id="prices" class="section bg-gray-50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-5xl font-bold text-center mb-4">Цены</h2>
+    <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">Прозрачное ценообразование без скрытых платежей. Скидка 15% при заключении договора на 6+ месяцев</p>
+    
+    <div class="grid md:grid-cols-2 gap-12">
+      <div>
+        <h3 class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-3">
+          <i class="fas fa-building text-blue-600"></i> Для бизнеса
+        </h3>
+        <div class="space-y-6">
+          <div class="price-card">
+            <div class="flex justify-between items-center mb-3">
+              <h4 class="text-xl font-bold">Ежедневная уборка</h4>
+              <span class="text-2xl font-bold text-blue-600">от 120 ₽/м²</span>
+            </div>
+            <p class="text-gray-600">Поддержание чистоты в офисах, магазинах, общественных пространствах</p>
+          </div>
+          
+          <div class="price-card">
+            <div class="flex justify-between items-center mb-3">
+              <h4 class="text-xl font-bold">Генеральная уборка</h4>
+              <span class="text-2xl font-bold text-blue-600">от 150 ₽/м²</span>
+            </div>
+            <p class="text-gray-600">Полная уборка бизнес-помещений, включая труднодоступные места</p>
+          </div>
+          
+          <div class="price-card featured">
+            <div class="flex justify-between items-center mb-3">
+              <h4 class="text-xl font-bold">После ремонта</h4>
+              <span class="text-2xl font-bold text-blue-600">договорная</span>
+            </div>
+            <p class="text-gray-600">Удаление строительной пыли и остатков материалов. Бесплатный выезд для оценки</p>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-3">
+          <i class="fas fa-home text-blue-600"></i> Для дома
+        </h3>
+        <div class="space-y-6">
+          <div class="price-card">
+            <div class="flex justify-between items-center mb-3">
+              <h4 class="text-xl font-bold">Ежедневная уборка</h4>
+              <span class="text-2xl font-bold text-blue-600">от 140 ₽/м²</span>
+            </div>
+            <p class="text-gray-600">Поддержание чистоты в квартирах и домах. Регулярное обслуживание</p>
+          </div>
+          
+          <div class="price-card">
+            <div class="flex justify-between items-center mb-3">
+              <h4 class="text-xl font-bold">Генеральная уборка</h4>
+              <span class="text-2xl font-bold text-blue-600">от 150 ₽/м²</span>
+            </div>
+            <p class="text-gray-600">Полная уборка всех помещений с глубокой чисткой поверхностей</p>
+          </div>
+          
+          <div class="price-card">
+            <div class="flex justify-between items-center mb-3">
+              <h4 class="text-xl font-bold">Мойка окон</h4>
+              <span class="text-2xl font-bold text-blue-600">от 150 ₽/м²</span>
+            </div>
+            <p class="text-gray-600">Профессиональная мойка окон с двух сторон без разводов</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -933,52 +1084,6 @@
   </div>
 </section>
 
-<!-- Services -->
-<section id="services" class="section bg-gray-50">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-5xl font-bold text-center mb-4">Наши услуги</h2>
-    <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">Полный спектр клининговых услуг для дома и офиса с использованием профессионального оборудования и безопасных средств</p>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="card fade-in" style="animation-delay: 0.1s">
-        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-calendar-day"></i></div>
-        <h3 class="text-2xl font-bold mb-4">Ежедневная / регулярная уборка</h3>
-        <p class="text-gray-700">Мытьё полов, влажная уборка, удаление пыли, протирание поверхностей, вынос мусора. Идеально для поддержания чистоты.</p>
-      </div>
-      
-      <div class="card fade-in" style="animation-delay: 0.2s">
-        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-broom"></i></div>
-        <h3 class="text-2xl font-bold mb-4">Генеральная уборка</h3>
-        <p class="text-gray-700">Полный комплекс: кухня, санузел, холодильник, плита, микроволновка, окна, балконы. Глубокая очистка всех поверхностей.</p>
-      </div>
-      
-      <div class="card fade-in" style="animation-delay: 0.3s">
-        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-paint-roller"></i></div>
-        <h3 class="text-2xl font-bold mb-4">Уборка после ремонта</h3>
-        <p class="text-gray-700">Удаление строительной пыли, мойка всех поверхностей, чистка вентиляции, уборка остатков строительных материалов.</p>
-      </div>
-      
-      <div class="card fade-in" style="animation-delay: 0.4s">
-        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-kitchen-set"></i></div>
-        <h3 class="text-2xl font-bold mb-4">Очистка кухонных и санитарных зон</h3>
-        <p class="text-gray-700">Глубокая чистка плит, раковин, сантехники, удаление жировых отложений, дезинфекция поверхностей.</p>
-      </div>
-      
-      <div class="card fade-in" style="animation-delay: 0.5s">
-        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-window-maximize"></i></div>
-        <h3 class="text-2xl font-bold mb-4">Мойка окон (с двух сторон)</h3>
-        <p class="text-gray-700">Профессиональная мойка без разводов, чистка рам и подоконников. Безопасные средства для любых типов стекол.</p>
-      </div>
-      
-      <div class="card fade-in" style="animation-delay: 0.6s">
-        <div class="text-blue-600 text-3xl mb-4"><i class="fas fa-building"></i></div>
-        <h3 class="text-2xl font-bold mb-4">Уборка офисов и нежилых помещений</h3>
-        <p class="text-gray-700">Ежедневная и генеральная уборка для бизнеса, магазинов, складов, медицинских учреждений.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Остальные секции (About, Prices, Reviews, Contacts) остаются с аналогичными улучшениями -->
 <section id="about" class="section bg-white">
   <div class="max-w-5xl mx-auto">
@@ -1013,88 +1118,15 @@
       </div>
       
       <div>
-        <p class="text-lg leading-relaxed mb-6">
-        Команда Клининговой компании «CRYSTAL» предлагает услуги уборки квартир, (не) жилых помещений и офисов.</p>
+        <p class="text-lg leading-relaxed mb-6">Команда Клининговой компании «CRYSTAL» предлагает услуги уборки квартир, (не) жилых помещений и офисов.</p>
         <p class="text-lg leading-relaxed mb-6">🫴Проводим уборку специализированными моющими средствами безопасными относительно здоровья человека и не разрушающими обрабатываемые поверхности.</p>
         <p class="text-lg leading-relaxed mb-6">🫴Мы направлены на постоянное сотрудничество – поэтому для всех клиентов, обратившихся к нам повторно, действует система скидок на любой вид наших услуг.</p>
         <p class="text-lg leading-relaxed mb-6">🫴Мы искренне благодарим вас за то, что доверяете нам создание идеальной чистоты для вашего дома и офиса❤️</p>
-        <p class="text-lg leading-relaxed mb-6">С любовью, команда CRYSTAL💦</p>
+        <p class="text-lg leading-relaxed mb-6">С любовью, команда CRYSTAL💦<br></p>
         <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-5">
           <p class="font-bold text-xl text-yellow-800">
             <i class="fas fa-gift mr-3"></i>В стоимость всех услуг уже включены профессиональные моющие средства!
           </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Prices -->
-<section id="prices" class="section bg-gray-50">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-5xl font-bold text-center mb-4">Цены</h2>
-    <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">Прозрачное ценообразование без скрытых платежей. Скидка 15% при заключении договора на 6+ месяцев</p>
-    
-    <div class="grid md:grid-cols-2 gap-12">
-      <div>
-        <h3 class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-3">
-          <i class="fas fa-building text-blue-600"></i> Для бизнеса
-        </h3>
-        <div class="space-y-6">
-          <div class="price-card">
-            <div class="flex justify-between items-center mb-3">
-              <h4 class="text-xl font-bold">Ежедневная уборка</h4>
-              <span class="text-2xl font-bold text-blue-600">от 120 ₽/м²</span>
-            </div>
-            <p class="text-gray-600">Поддержание чистоты в офисах, магазинах, общественных пространствах</p>
-          </div>
-          
-          <div class="price-card">
-            <div class="flex justify-between items-center mb-3">
-              <h4 class="text-xl font-bold">Генеральная уборка</h4>
-              <span class="text-2xl font-bold text-blue-600">от 150 ₽/м²</span>
-            </div>
-            <p class="text-gray-600">Полная уборка бизнес-помещений, включая труднодоступные места</p>
-          </div>
-          
-          <div class="price-card featured">
-            <div class="flex justify-between items-center mb-3">
-              <h4 class="text-xl font-bold">После ремонта</h4>
-              <span class="text-2xl font-bold text-blue-600">договорная</span>
-            </div>
-            <p class="text-gray-600">Удаление строительной пыли и остатков материалов. Бесплатный выезд для оценки</p>
-          </div>
-        </div>
-      </div>
-      
-      <div>
-        <h3 class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-3">
-          <i class="fas fa-home text-blue-600"></i> Для дома
-        </h3>
-        <div class="space-y-6">
-          <div class="price-card">
-            <div class="flex justify-between items-center mb-3">
-              <h4 class="text-xl font-bold">Ежедневная уборка</h4>
-              <span class="text-2xl font-bold text-blue-600">от 140 ₽/м²</span>
-            </div>
-            <p class="text-gray-600">Поддержание чистоты в квартирах и домах. Регулярное обслуживание</p>
-          </div>
-          
-          <div class="price-card">
-            <div class="flex justify-between items-center mb-3">
-              <h4 class="text-xl font-bold">Генеральная уборка</h4>
-              <span class="text-2xl font-bold text-blue-600">от 150 ₽/м²</span>
-            </div>
-            <p class="text-gray-600">Полная уборка всех помещений с глубокой чисткой поверхностей</p>
-          </div>
-          
-          <div class="price-card">
-            <div class="flex justify-between items-center mb-3">
-              <h4 class="text-xl font-bold">Мойка окон</h4>
-              <span class="text-2xl font-bold text-blue-600">от 150 ₽/м²</span>
-            </div>
-            <p class="text-gray-600">Профессиональная мойка окон с двух сторон без разводов</p>
-          </div>
         </div>
       </div>
     </div>
