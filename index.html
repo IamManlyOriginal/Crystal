@@ -26,12 +26,29 @@
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap');
   
   body { 
-    font-family: 'Inter', system-ui, sans-serif; 
-    background-color: var(--light-bg); 
+    font-family: 'Inter', system-ui, sans-serif;
+    background: linear-gradient(
+      135deg,
+      #00e1ff 0%,
+      #008cff 25%,
+      #0059ff 50%,
+      #ebff38 75%,
+      #f2ff39 100%
+    );
+    background-attachment: fixed;
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    min-height: 100vh;
     scroll-behavior: smooth;
     overflow-x: hidden;
-  }
-  
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
   }
@@ -678,10 +695,8 @@
     <div class="inline-block mb-6">
       <span class="badge pulse-animation"><i class="fas fa-percentage mr-1"></i> Скидка 15% при договоре от 6 месяцев</span>
     </div>
-    
     <h1 class="text-5xl md:text-7xl font-bold mb-6 hero-gradient">Нет времени на уборку?</h1>
     <p class="text-3xl md:text-4xl mb-8 font-semibold text-gray-800">Пусть её сделают профессионалы <span class="text-blue-600">CRYSTAL</span></p>
-    
     <div class="flex flex-wrap justify-center gap-4 mb-12">
       <div class="bg-white px-6 py-3 rounded-full font-medium shadow-md flex items-center gap-2 price-card">
         <i class="fas fa-shield-alt text-green-500"></i> Безопасные средства
@@ -693,8 +708,6 @@
         <i class="fas fa-award text-yellow-500"></i> Гарантия качества
       </div>
     </div>
-    
-<div class="relative overflow-hidden rounded-2xl shadow-2xl mt-8 mb-6">
 </section>
 
 <!-- Services -->
