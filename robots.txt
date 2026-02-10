@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /search/
+Disallow: /*?*
+Disallow: /*&*
+
+Sitemap: https://клининг-кристал.ru/sitemap.xml
+
+User-agent: Yandex
+Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign
