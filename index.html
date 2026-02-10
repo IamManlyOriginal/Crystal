@@ -10,7 +10,7 @@
 <!-- Или для разных форматов -->
 <link rel="icon" type="image/png" sizes="32x32" href="source/logo.jpeg">
 <link rel="icon" type="image/png" sizes="16x16" href="source/logo.jpeg">
-<meta name="description" content="Профессиональный клининг: уборка квартир, офисов, после ремонта. Безопасные средства. Скидка 15% при договоре от 6 месяцев.">
+<meta name="description" content="Профессиональный клининг: уборка квартир, офисов, после ремонта. Безопасные средства. Скидка 15% при договоре от 3 месяцев.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -29,11 +29,11 @@
     font-family: 'Inter', system-ui, sans-serif;
     background: linear-gradient(
       135deg,
-      #00e1ff 0%,
-      #008cff 25%,
-      #0059ff 50%,
-      #ebff38 75%,
-      #f2ff39 100%
+      #00ffff 0%,
+      #08e8de 25%,
+      #40e0d0 50%,
+      #1fcecb 75%,
+      #20b2aa 100%
     );
     background-attachment: fixed;
     background-size: 400% 400%;
@@ -119,9 +119,9 @@
   }
   
   .price-card:hover {
-    border-color: var(--primary);
+    border-color: rgb(0, 174, 255);
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+    box-shadow: 0 20px 40px rgb(0, 225, 255);
   }
   
   .price-card.featured {
@@ -145,9 +145,7 @@
   }
   
   .hero-gradient {
-    background: linear-gradient(135deg, #667eea 0%, #0198fd 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #0198fd;
     background-clip: text;
   }
   
@@ -530,6 +528,36 @@
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
     max-width: 60%;
   }
+
+.back {
+  background-image: url('source/backmb1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 1.5rem;
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+  /* Увеличиваем контраст */
+  background-blend-mode: overlay; /* Смешивание цветов */
+}
+
+.back .badge {
+  background: rgb(255, 255, 255);
+  color: #000000;
+}
+
+.back .price-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.color-crystal{
+  color: #0198fd;
+}
+
+.color-prof{
+  color:#0198fd;
+}
 </style>
 
 </head>
@@ -564,11 +592,6 @@
       </a>
       <a href="#about" class="hover:text-blue-600 transition duration-300 relative group">
         О компании
-        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-      </a>
-
-      <a href="#reviews" class="hover:text-blue-600 transition duration-300 relative group">
-        Отзывы
         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
       </a>
       <a href="#contacts" class="hover:text-blue-600 transition duration-300 relative group">
@@ -635,7 +658,6 @@
       <a href="#services" class="mobile-link hover:text-blue-600 py-2 border-b border-gray-100">Услуги</a>
       <a href="#prices" class="mobile-link hover:text-blue-600 py-2 border-b border-gray-100">Цены</a>
       <a href="#about" class="mobile-link hover:text-blue-600 py-2 border-b border-gray-100">О компании</a>
-      <a href="#reviews" class="mobile-link hover:text-blue-600 py-2 border-b border-gray-100">Отзывы</a>
       <a href="#contacts" class="mobile-link hover:text-blue-600 py-2 border-b border-gray-100">Контакты</a>
     </nav>
     <div class="mt-8 pt-6 border-t border-gray-200">
@@ -692,12 +714,12 @@
 
 <!-- Hero -->
 <section id="hero" class="section bg-gradient-to-br from-blue-50 to-indigo-50 pt-32">
-  <div class="max-w-6xl mx-auto px-6 text-center">
+  <div class="max-w-6xl mx-auto px-6 text-center back">
     <div class="inline-block mb-6">
-      <span class="badge pulse-animation"><i class="fas fa-percentage mr-1"></i> Скидка 15% при договоре от 6 месяцев</span>
+      <span class="badge pulse-animation"><i class="fas fa-percentage mr-1"></i> Скидка 15% при договоре от 3 месяцев</span>
     </div>
     <h1 class="text-5xl md:text-7xl font-bold mb-6 hero-gradient">Нет времени на уборку?</h1>
-    <p class="text-3xl md:text-4xl mb-8 font-semibold text-gray-800">Пусть её сделают профессионалы <span class="text-blue-600">CRYSTAL</span></p>
+    <p class="text-3xl md:text-4xl mb-8 font-semibold color-prof">Пусть её сделают профессионалы <span class="color-crystal">CRYSTAL</span></p>
     <div class="flex flex-wrap justify-center gap-4 mb-12">
       <div class="bg-white px-6 py-3 rounded-full font-medium shadow-md flex items-center gap-2 price-card">
         <i class="fas fa-shield-alt text-green-500"></i> Безопасные средства
@@ -1255,64 +1277,6 @@ document.head.appendChild(style);
             <i class="fas fa-gift mr-3"></i>В стоимость всех услуг уже включены профессиональные моющие средства!
           </p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Reviews -->
-<section id="reviews" class="section bg-white">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-5xl font-bold text-center mb-4">Отзывы клиентов</h2>
-    <p class="text-xl text-gray-600 text-center mb-12 max-w-3xl mx-auto">Более 500 довольных клиентов в Ростове-на-Дону</p>
-    
-    <div class="grid md:grid-cols-3 gap-8">
-      <div class="card">
-        <div class="flex items-center mb-4">
-          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl mr-4">
-            ЕС
-          </div>
-          <div>
-            <p class="font-bold text-lg">Елена Соколова</p>
-            <p class="text-gray-600 text-sm">Ростов-на-Дону, Центр</p>
-          </div>
-        </div>
-        <div class="flex text-yellow-400 mb-3">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="text-gray-700 italic">"Отличная компания! Заказываю уже полгода, всегда чисто и безопасно для ребёнка. Особенно нравится, что используют экологичные средства. Рекомендую!"</p>
-      </div>
-      
-      <div class="card">
-        <div class="flex items-center mb-4">
-          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl mr-4">
-            ИП
-          </div>
-          <div>
-            <p class="font-bold text-lg">Иван Петров</p>
-            <p class="text-gray-600 text-sm">Офис на Ворошиловском</p>
-          </div>
-        </div>
-        <div class="flex text-yellow-400 mb-3">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="text-gray-700 italic">"Очень доволен уборкой офиса. Профессионально и быстро! Заключили договор на 6 месяцев, получили хорошую скидку. Персонал вежливый, работают качественно."</p>
-      </div>
-      
-      <div class="card">
-        <div class="flex items-center mb-4">
-          <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-xl mr-4">
-            МС
-          </div>
-          <div>
-            <p class="font-bold text-lg">Мария Семёнова</p>
-            <p class="text-gray-600 text-sm">Ростов-на-Дону, Западный</p>
-          </div>
-        </div>
-        <div class="flex text-yellow-400 mb-3">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="text-gray-700 italic">"Заказывала уборку после ремонта в квартире. Команда пунктуальная и аккуратная. Убрали всю строительную пыль, помыли окна, привели в порядок санузел. Супер!"</p>
       </div>
     </div>
   </div>
