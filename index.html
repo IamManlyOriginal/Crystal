@@ -1081,7 +1081,7 @@
               
               <!-- Подзаголовок Клининг для дома - БЕЛЫЙ -->
               <p class="text-lg md:text-xl text-white font-medium">
-                Клининг для дома
+                Клининг для дома и бизнеса
               </p>
               
               <!-- Основной заголовок -->
@@ -1980,9 +1980,30 @@ document.addEventListener('DOMContentLoaded', function() {
   function initModals() {
     try {
       const calculateOrderBtn = document.getElementById('calculate-order-btn');
+      const orderBtnHero = document.getElementById('order-btn-hero'); // Добавлено
       const contactModal = document.getElementById('contact-modal');
       const closeModal = document.getElementById('close-modal');
       const contactOptions = document.querySelectorAll('.contact-option');
+      
+      // Простой текст заказа для hero кнопки
+      function generateHeroOrderMessage() {
+        return `Здравствуйте! Хочу заказать уборку.
+
+Пожалуйста, свяжитесь со мной для обсуждения деталей.`;
+      }
+      
+      // Функция для получения сообщения заказа (обновленная)
+      function getOrderMessage() {
+        // Проверяем, есть ли сохраненное сообщение от hero кнопки
+        const heroMessage = contactModal.getAttribute('data-order-message');
+        if (heroMessage) {
+          // Очищаем атрибут после использования
+          contactModal.removeAttribute('data-order-message');
+          return heroMessage;
+        }
+        // Иначе используем сообщение из калькулятора
+        return generateOrderMessage();
+      }
       
       if (calculateOrderBtn && contactModal) {
         calculateOrderBtn.addEventListener('click', () => {
@@ -1990,9 +2011,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       }
       
+      // Обработчик для hero кнопки (добавлено)
+      if (orderBtnHero && contactModal) {
+        orderBtnHero.addEventListener('click', () => {
+          const heroOrderMessage = generateHeroOrderMessage();
+          contactModal.setAttribute('data-order-message', heroOrderMessage);
+          contactModal.classList.add('show');
+        });
+      }
+      
       if (closeModal && contactModal) {
         closeModal.addEventListener('click', () => {
           contactModal.classList.remove('show');
+          // Очищаем сообщение при закрытии
+          contactModal.removeAttribute('data-order-message');
         });
       }
       
@@ -2000,6 +2032,8 @@ document.addEventListener('DOMContentLoaded', function() {
         contactModal.addEventListener('click', (e) => {
           if (e.target === contactModal) {
             contactModal.classList.remove('show');
+            // Очищаем сообщение при закрытии
+            contactModal.removeAttribute('data-order-message');
           }
         });
       }
@@ -2007,7 +2041,7 @@ document.addEventListener('DOMContentLoaded', function() {
       contactOptions.forEach(option => {
         option.addEventListener('click', function() {
           const contactMethod = this.getAttribute('data-contact');
-          const orderMessage = generateOrderMessage();
+          const orderMessage = getOrderMessage(); // Используем обновленную функцию
           const encodedMessage = encodeURIComponent(orderMessage);
           
           switch (contactMethod) {
@@ -2020,24 +2054,36 @@ document.addEventListener('DOMContentLoaded', function() {
               
             case 'telegram':
               window.open(`https://t.me/Kristal_R?text=${encodedMessage}`, '_blank');
-              if (contactModal) contactModal.classList.remove('show');
+              if (contactModal) {
+                contactModal.classList.remove('show');
+                contactModal.removeAttribute('data-order-message');
+              }
               break;
               
             case 'whatsapp':
               window.open(`https://wa.me/79064449048?text=${encodedMessage}`, '_blank');
-              if (contactModal) contactModal.classList.remove('show');
+              if (contactModal) {
+                contactModal.classList.remove('show');
+                contactModal.removeAttribute('data-order-message');
+              }
               break;
               
             case 'vk':
               window.open(`https://vk.ru/ccleancristal`, '_blank');
-              if (contactModal) contactModal.classList.remove('show');
+              if (contactModal) {
+                contactModal.classList.remove('show');
+                contactModal.removeAttribute('data-order-message');
+              }
               break;
               
             case 'email':
               const subject = encodeURIComponent('Заказ уборки с сайта CRYSTAL');
               const body = encodeURIComponent(orderMessage);
               window.location.href = `mailto:kk_crystal@mail.ru?subject=${subject}&body=${body}`;
-              if (contactModal) contactModal.classList.remove('show');
+              if (contactModal) {
+                contactModal.classList.remove('show');
+                contactModal.removeAttribute('data-order-message');
+              }
               break;
           }
         });
@@ -2195,7 +2241,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Инициализация всех компонентов
   function initAll() {
     initCalculator();
-    initModals();
+    initModals(); // Эта функция теперь содержит обработчик для orderBtnHero
     initMobileMenu();
     initContactMenu();
     initCopyEmail();
