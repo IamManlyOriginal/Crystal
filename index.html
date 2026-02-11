@@ -1,120 +1,146 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRYSTAL — клининговая компания в Ростове-на-Дону</title>
-<link rel="icon" type="image/png" href="source/logo.png">
-<link rel="icon" type="image/png" sizes="32x32" href="source/logo.png">
-<link rel="icon" type="image/png" sizes="16x16" href="source/logo.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="description" content="Профессиональный клининг: уборка квартир, офисов, после ремонта. Безопасные средства. Скидка 15% при договоре от 3 месяцев.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://клининг-кристал.ru/">
-<meta property="og:title" content="CRYSTAL — клининговая компания в Ростове-на-Дону">
-<meta property="og:description" content="Профессиональный клининг: уборка квартир, офисов, после ремонта">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://клининг-кристал.ru/">
-<meta property="og:image" content="https://клининг-кристал.ru/source/logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<!-- Preconnect для ускорения загрузки -->
-<link rel="preconnect" href="https://cdn.tailwindcss.com">
-<link rel="preconnect" href="https://cdnjs.cloudflare.com">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<!-- Предзагрузка критических изображений -->
-<link rel="preload" href="source/backmb.png" as="image" type="image/png">
-<link rel="preload" href="source/logo.png" as="image" type="image/png">
-
-<!-- Улучшенный meta description -->
-<meta name="description" content="Профессиональная клининговая компания CRYSTAL в Ростове-на-Дону. Уборка квартир, офисов, после ремонта. Мойка окон. Безопасные средства. Бесплатный выезд. Скидка 15% при долгосрочном договоре. Работаем с 2018 года.">
-
-<!-- Микроразметка Schema.org - КРИТИЧНО ДЛЯ SEO! -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "CRYSTAL - клининговая компания",
-  "description": "Профессиональная уборка квартир, офисов, после ремонта в Ростове-на-Дону",
-  "image": "https://клининг-кристал.ru/source/logo.png",
-  "telephone": ["+79064449048", "+79281456263", "+79604449048"],
-  "email": "kk_crystal@mail.ru",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Ростов-на-Дону",
-    "addressRegion": "Ростовская область",
-    "addressCountry": "RU"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "47.2214",
-    "longitude": "39.7124"
-  },
-  "url": "https://клининг-кристал.ru/",
-  "priceRange": "₽₽",
-  "openingHours": ["Mo-Fr 08:00-20:00", "Sa-Su 09:00-18:00"],
-  "areaServed": {
-    "@type": "City",
-    "name": "Ростов-на-Дону"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Клининговые услуги",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Генеральная уборка квартир",
-          "description": "Полная уборка всех помещений с глубокой чисткой поверхностей"
-        },
-        "price": "150",
-        "priceCurrency": "RUB",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
-          "priceCurrency": "RUB",
+  <!-- ========== ОСНОВНЫЕ МЕТА-ТЕГИ ========== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- ========== TITLE (до 60 символов) ========== -->
+  <title>CRYSTAL — клининг в Ростове-на-Дону | Уборка квартир и офисов</title>
+  
+  <!-- ========== FAVICON (ЗНАЧОК В БРАУЗЕРЕ) ========== -->
+  <!-- Сгенерировать на https://realfavicongenerator.net/ и загрузить в корень -->
+  <link rel="icon" type="image/png" href="source/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="source/favicon.svg" />
+  <link rel="shortcut icon" href="source/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="source/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="клининг-кристал.рф" />
+  <link rel="manifest" href="source/site.webmanifest" />
+  <meta name="theme-color" content="#0a3b5c">
+  
+  <!-- ========== SEO: META DESCRIPTION (150-160 символов) ========== -->
+  <meta name="description" content="Профессиональный клининг в Ростове-на-Дону. Уборка квартир, офисов, после ремонта. Безопасные средства. Бесплатный выезд. Скидка 15% при договоре от 3 месяцев. Работаем с 2018.">
+  
+  <!-- ========== SEO: ROBOTS & CANONICAL (Punycode для стабильности) ========== -->
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://xn----8sbhtacjeehpb6bpp.xn--p1ai/">
+  
+  <!-- ========== OPEN GRAPH (ДЛЯ СОЦСЕТЕЙ) ========== -->
+  <meta property="og:title" content="CRYSTAL — клининговая компания в Ростове-на-Дону">
+  <meta property="og:description" content="Уборка квартир, офисов, после ремонта. Мойка окон. Безопасные средства. Скидка 15%">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xn----8sbhtacjeehpb6bpp.xn--p1ai/">
+  <meta property="og:image" content="https://xn----8sbhtacjeehpb6bpp.xn--p1ai/source/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="CRYSTAL">
+  
+  <!-- ========== TWITTER CARD ========== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CRYSTAL — клининг в Ростове-на-Дону">
+  <meta name="twitter:description" content="Уборка квартир, офисов, после ремонта. Скидка 15% при договоре от 3 месяцев.">
+  <meta name="twitter:image" content="https://xn----8sbhtacjeehpb6bpp.xn--p1ai/source/og-image.jpg">
+  
+  <!-- ========== PRECONNECT (УСКОРЕНИЕ ЗАГРУЗКИ) ========== -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- ========== ПРЕДЗАГРУЗКА КРИТИЧЕСКИХ ИЗОБРАЖЕНИЙ ========== -->
+  <link rel="preload" href="/source/backmb.png" as="image" type="image/png">
+  <link rel="preload" href="/source/logo.png" as="image" type="image/png">
+  
+  <!-- ========== МИКРОРАЗМЕТКА SCHEMA.ORG (LocalBusiness) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "CRYSTAL - клининговая компания",
+    "description": "Профессиональная уборка квартир, офисов, после ремонта в Ростове-на-Дону",
+    "image": "https://xn----8sbhtacjeehpb6bpp.xn--p1ai/source/logo.png",
+    "telephone": ["+79064449048", "+79281456263", "+79604449048"],
+    "email": "kk_crystal@mail.ru",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ростов-на-Дону",
+      "addressRegion": "Ростовская область",
+      "addressCountry": "RU"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "47.2214",
+      "longitude": "39.7124"
+    },
+    "url": "https://xn----8sbhtacjeehpb6bpp.xn--p1ai/",
+    "priceRange": "₽₽",
+    "openingHours": ["Mo-Fr 08:00-20:00", "Sa-Su 09:00-18:00"],
+    "areaServed": {
+      "@type": "City",
+      "name": "Ростов-на-Дону"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Клининговые услуги",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Генеральная уборка квартир",
+            "description": "Полная уборка всех помещений с глубокой чисткой поверхностей"
+          },
           "price": "150",
-          "unitCode": "MTK",
-          "unitText": "квадратный метр"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Уборка офисов",
-          "description": "Ежедневная и генеральная уборка офисных помещений"
-        },
-        "price": "120",
-        "priceCurrency": "RUB",
-        "priceSpecification": {
-          "@type": "UnitPriceSpecification",
           "priceCurrency": "RUB",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "priceCurrency": "RUB",
+            "price": "150",
+            "unitCode": "MTK",
+            "unitText": "квадратный метр"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Уборка офисов",
+            "description": "Ежедневная и генеральная уборка офисных помещений"
+          },
           "price": "120",
-          "unitCode": "MTK",
-          "unitText": "квадратный метр"
+          "priceCurrency": "RUB",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "priceCurrency": "RUB",
+            "price": "120",
+            "unitCode": "MTK",
+            "unitText": "квадратный метр"
+          }
         }
-      }
+      ]
+    },
+    "sameAs": [
+      "https://vk.com/ccleancristal",
+      "https://t.me/Kristal_R"
     ]
-  },
-  "sameAs": [
-    "https://vk.ru/ccleancristal",
-    "https://t.me/Kristal_R"
-  ]
-}
-</script>
+  }
+  </script>
+  
+  <!-- ========== МИКРОРАЗМЕТКА SCHEMA.ORG (WebSite) ========== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://xn----8sbhtacjeehpb6bpp.xn--p1ai/",
+    "name": "CRYSTAL - клининговая компания",
+    "description": "Профессиональные клининговые услуги в Ростове-на-Дону"
+  }
+  </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": "https://клининг-кристал.ru/",
-  "name": "CRYSTAL - клининговая компания",
-  "description": "Профессиональные клининговые услуги в Ростове-на-Дону"
-}
-</script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 <style>
   :root { 
