@@ -133,7 +133,36 @@
   }
   
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap');
-  
+  /* 1. Запрещаем горизонтальный скролл */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 2. Все блоки не должны вылезать за границы */
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 3. Для всех секций и контейнеров */
+  .section, .max-w-6xl, .max-w-7xl, .container, .elfsight-app-* {
+    overflow-x: hidden;
+  }
+
+  /* 4. Карусель – точно не должна создавать скролл */
+  #image-carousel {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* 5. Виджет Elfsight (если он создаёт iframe) */
+  .elfsight-app-3648cb4d-b2c3-48cc-a1de-d7b9ea6c88cc {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
   body { 
     font-family: 'Inter', system-ui, sans-serif;
     background: linear-gradient(
@@ -164,6 +193,20 @@
   
   /* Адаптивные стили для всех устройств */
   @media (max-width: 640px) {
+    /* Уменьшаем отступы и размер иконок в hero-мессенджерах */
+    .bg-white\/10 .space-y-3 a {
+      padding: 0.5rem 0.75rem !important;
+    }
+    .bg-white\/10 .space-y-3 a .w-10.h-10 {
+      width: 2rem !important;
+      height: 2rem !important;
+    }
+    .bg-white\/10 .space-y-3 a .font-semibold {
+      font-size: 0.85rem !important;
+    }
+    .bg-white\/10 .space-y-3 a .text-sm {
+      font-size: 0.7rem !important;
+    }
     .hero-title {
       font-size: 1.8rem !important;
       line-height: 1.2 !important;
@@ -946,6 +989,10 @@
     border-radius: 2rem !important;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   }
+
+  .burger-social-link.max {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  }
 </style>
 </head>
 <body class="relative">
@@ -977,6 +1024,10 @@
       </a>
       <a href="#about" class="hover:text-blue-600 transition duration-300 relative group text-sm lg:text-base">
         О компании
+        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+      </a>
+       <a href="#reviews-list" class="hover:text-blue-600 transition duration-300 relative group text-sm lg:text-base">
+        Отзывы
         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
       </a>
       <a href="#contacts" class="hover:text-blue-600 transition duration-300 relative group text-sm lg:text-base">
@@ -1027,6 +1078,14 @@
             <div class="text-xs text-gray-600">ccleancristal</div>
           </div>
         </a>
+        <a href="https://max.ru/ваш_логин" target="_blank" class="flex items-center gap-3">
+          <!-- Правильно: -->
+          <i class="fas fa-comment-dots text-purple-500"></i>
+          <div>
+            <div class="font-semibold text-sm">MAX</div>
+            <div class="text-xs text-gray-600">Написать в MAX</div>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -1067,6 +1126,10 @@
         <i class="fas fa-info-circle"></i>
         О компании
       </a>
+        <a href="#reviews-list" class="burger-menu-item mobile-link">
+          <i class="fas fa-comment-dots"></i> 
+          Отзывы
+        </a>
       <a href="#contacts" class="burger-menu-item mobile-link">
         <i class="fas fa-address-book"></i>
         Контакты
@@ -1100,6 +1163,9 @@
       </a>
       <a href="https://vk.com/ccleancristal" target="_blank" class="burger-social-link vk" title="ВКонтакте">
         <i class="fab fa-vk"></i>
+      </a>
+      <a href="https://max.ru/ваш_логин" target="_blank" class="burger-social-link max" title="MAX">
+        <i class="fas fa-comment-dots"></i>
       </a>
     </div>
   </div>
@@ -1311,6 +1377,16 @@
                     <div>
                       <div class="font-semibold text-white">VK</div>
                       <div class="text-sm text-white/80">Ccleancristal</div>
+                    </div>
+                  </a>
+                  <a href="#" target="_blank" 
+                    class="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-colors">
+                    <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                      <i class="fas fa-comment-dots text-white"></i>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-white">MAX</div>
+                      <div class="text-sm text-white/80">Партнёрский канал</div>
                     </div>
                   </a>
                 </div>
@@ -1688,7 +1764,10 @@
           </ul>
         </div>
       </div>
-      
+
+
+
+
       <div>
         <p class="text-sm md:text-base lg:text-lg leading-relaxed mb-3 md:mb-4 lg:mb-6">Команда Клининговой компании «CRYSTAL» предлагает услуги уборки квартир, (не) жилых помещений и офисов.</p>
         <p class="text-sm md:text-base lg:text-lg leading-relaxed mb-3 md:mb-4 lg:mb-6">🫴Проводим уборку специализированными моющими средствами безопасными относительно здоровья человека и не разрушающими обрабатываемые поверхности.</p>
@@ -1702,6 +1781,14 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ========== СЕКЦИЯ ОТЗЫВОВ ========== -->
+<section id="reviews-list" class="section section-padding">
+  <div class="max-w-6xl mx-auto">
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-3648cb4d-b2c3-48cc-a1de-d7b9ea6c88cc" data-elfsight-app-lazy></div>
   </div>
 </section>
 
