@@ -989,10 +989,6 @@
     border-radius: 2rem !important;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
   }
-
-  .burger-social-link.max {
-  background: linear-gradient(135deg, #9b59b6, #8e44ad);
-  }
 </style>
 </head>
 <body class="relative">
@@ -1078,9 +1074,12 @@
             <div class="text-xs text-gray-600">ccleancristal</div>
           </div>
         </a>
-        <a href="https://max.ru/ваш_логин" target="_blank" class="flex items-center gap-3">
-          <!-- Правильно: -->
-          <i class="fas fa-comment-dots text-purple-500"></i>
+        <a href="https://max.ru/u/f9LHodD0cOLpOtDG_2F1wPNVdQbqQl7JPoyvNU0fKTIN9Mv0rRzjFEthMvg" target="_blank" class="flex items-center gap-3">
+        <img src="source/Max_logo_2025.png"
+          alt="QR-код для связи с клининговой компанией CRYSTAL в WhatsApp"
+          width="144"
+          height="144"
+          class="w-4 h-4 object-contain">
           <div>
             <div class="font-semibold text-sm">MAX</div>
             <div class="text-xs text-gray-600">Написать в MAX</div>
@@ -1164,8 +1163,12 @@
       <a href="https://vk.com/ccleancristal" target="_blank" class="burger-social-link vk" title="ВКонтакте">
         <i class="fab fa-vk"></i>
       </a>
-      <a href="https://max.ru/ваш_логин" target="_blank" class="burger-social-link max" title="MAX">
-        <i class="fas fa-comment-dots"></i>
+      <a href="https://max.ru/u/f9LHodD0cOLpOtDG_2F1wPNVdQbqQl7JPoyvNU0fKTIN9Mv0rRzjFEthMvg" target="_blank" class="burger-social-link max" title="MAX">
+      <img src="source/Max_logo_2025.png"
+          alt="QR-код для связи с клининговой компанией CRYSTAL в WhatsApp"
+          width="144"
+          height="144"
+          class="w-10 h-10 object-contain">
       </a>
     </div>
   </div>
@@ -1210,6 +1213,16 @@
       </div>
     </div>
     
+    <div class="contact-option" data-contact="max">
+      <img src="source/Max_logo_2025.png" 
+          alt="MAX мессенджер" 
+          class="w-10 h-10 rounded-full object-cover mr-3">
+      <div>
+        <div class="font-bold text-base md:text-lg">MAX</div>
+        <div class="text-gray-600 text-sm md:text-base">Написать в MAX</div>
+      </div>
+    </div>
+
     <div class="contact-option email" data-contact="email">
       <i class="fas fa-envelope"></i>
       <div>
@@ -1262,7 +1275,47 @@
                 </span>
               </div>
             </div>
-            <!-- QR код под текстом -->
+            <!-- Объявление о найме клинеров -->
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
+              <div class="flex flex-col md:flex-row items-center gap-6">
+                <!-- Текст вакансии -->
+                <div class="space-y-3 flex-1">
+                  <h3 class="text-xl md:text-2xl font-bold text-white flex items-center gap-2">
+                    <i class="fas fa-hands-helping text-blue-300"></i>
+                    Работа в CRYSTAL
+                  </h3>
+                  <p class="text-base md:text-lg font-semibold text-white">
+                    Приглашаем клинеров в дружную команду!
+                  </p>
+                  <ul class="space-y-1 text-sm text-white/80">
+                    <li class="flex items-center gap-2">
+                      <i class="fas fa-check-circle text-green-400 text-xs"></i>
+                      <span>График: полный день, подработка, выходные</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fas fa-check-circle text-green-400 text-xs"></i>
+                      <span>Оборудование и средства предоставляем</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fas fa-check-circle text-green-400 text-xs"></i>
+                      <span>Достойная оплата + премии</span>
+                    </li>
+                  </ul>
+                  <div class="pt-2">
+                    <a href="https://max.ru/u/f9LHodD0cOLpOtDG_2F1wPNVdQbqQl7JPoyvNU0fKTIN9Mv0rRzjFEthMvg" 
+                      target="_blank" 
+                      class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-5 rounded-full transition-all shadow-md text-sm">
+                      <img src="source/Max_logo_2025.png"
+                          alt="QR-код для связи с клининговой компанией CRYSTAL в WhatsApp"
+                          width="144"
+                          height="144"
+                          class="w-8 h-8 object-contain">
+                      Откликнуться в MAX
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
               <div class="flex flex-col md:flex-row items-center gap-6">
                 <!-- QR код -->
@@ -1379,10 +1432,14 @@
                       <div class="text-sm text-white/80">Ccleancristal</div>
                     </div>
                   </a>
-                  <a href="#" target="_blank" 
+                  <a href="https://max.ru/u/f9LHodD0cOLpOtDG_2F1wPNVdQbqQl7JPoyvNU0fKTIN9Mv0rRzjFEthMvg" target="_blank" 
                     class="flex items-center gap-3 p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-colors">
-                    <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
-                      <i class="fas fa-comment-dots text-white"></i>
+                    <div>
+                      <img src="source/Max_logo_2025.png"
+                          alt="QR-код для связи с клининговой компанией CRYSTAL в WhatsApp"
+                          width="144"
+                          height="144"
+                          class="w-8 h-8 object-contain">
                     </div>
                     <div>
                       <div class="font-semibold text-white">MAX</div>
@@ -1858,6 +1915,21 @@
                 <p class="font-bold text-sm md:text-base lg:text-lg">ВКонтакте</p>
                 <a href="https://vk.com/ccleancristal" target="_blank" class="text-blue-600 text-base md:text-lg lg:text-xl font-semibold hover:underline">ccleancristal</a>
                 <p class="text-gray-600 mt-1 text-xs md:text-sm">Наша группа ВКонтакте</p>
+              </div>
+
+            </div>
+            <div class="flex items-start gap-2 md:gap-3 lg:gap-4">
+              <div class="">
+                <img src="source/Max_logo_2025.png"
+                    alt="QR-код для связи с клининговой компанией CRYSTAL в WhatsApp"
+                    width="144"
+                    height="144"
+                    class="w-10 h-10 object-contain">
+              </div>
+              <div>
+                <p class="font-bold text-sm md:text-base lg:text-lg">MAX</p>
+                <a href="https://max.ru/u/f9LHodD0cOLpOtDG_2F1wPNVdQbqQl7JPoyvNU0fKTIN9Mv0rRzjFEthMvg" target="_blank" class="text-blue-600 text-base md:text-lg lg:text-xl font-semibold hover:underline">Эльмира</a>
+                <p class="text-gray-600 mt-1 text-xs md:text-sm">Руководитель по набору сотрудников</p>
               </div>
             </div>
           </div>
@@ -2338,6 +2410,14 @@ document.addEventListener('DOMContentLoaded', function() {
               const subject = encodeURIComponent('Заказ уборки с сайта CRYSTAL');
               const body = encodeURIComponent(orderMessage);
               window.location.href = `mailto:kk_crystal@mail.ru?subject=${subject}&body=${body}`;
+              if (contactModal) {
+                contactModal.classList.remove('show');
+                contactModal.removeAttribute('data-order-message');
+              }
+              break;
+
+            case 'max':
+              window.open('https://max.ru/u/f9LHodD0cOLpOtDG_2F1wPNVdQbqQl7JPoyvNU0fKTIN9Mv0rRzjFEthMvg', '_blank');
               if (contactModal) {
                 contactModal.classList.remove('show');
                 contactModal.removeAttribute('data-order-message');
